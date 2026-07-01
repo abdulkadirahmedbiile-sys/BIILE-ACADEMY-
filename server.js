@@ -13,7 +13,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-// Xogta saxda ah ee Ardayda iyo dhammaan adeegyada portalka
+// Xogta rasmiga ah ee Ardayda BIILE ACADEMY
 const ardayda = [
     {
         username: "ali123",
