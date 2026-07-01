@@ -51,7 +51,23 @@ const ardayda = [
             { maaddo: "Barashada Adobe Photoshop", qeybta: "Graphic Design", semester: "Semester 1", code: "PSD01" }
         ]
     }
-];
+];    {
+        username: "akram123",
+        password: "password123",
+        magac: "Akram Axmed Cabdulqadir Biile",
+        koorso: "Full-Stack Web Development",
+        casharo: ["Hordhaca HTML & CSS", "Barashada JavaScript", "Nidaamka Node.js Basics"],
+        natiijooyinka: [
+            { maaddo: "Hordhaca HTML & CSS", macallin: "Mr. Maxamed Cali", dhibco: 98 }
+        ],
+        bayaan_lacagaha: [
+            { no: 1, date: "2026-07-01", info: "lagu dalacy", dr: "30.00", cr: "0.00", bal: "30.00" }
+        ],
+        assignments: [
+            { maaddo: "Hordhaca HTML & CSS", qeybta: "Web Design", semester: "Semester 1", code: "HTML01" }
+        ]
+    }
+
 
 app.get('/', (req, res) => {
     res.render('login', { error: null });
@@ -64,7 +80,7 @@ app.post('/login', (req, res) => {
         req.session.ardayId = username;
         res.redirect('/dashboard');
     } else {
-        res.render('login', { error: "Username ama Password khaldan!" });
+        res.render('login', { error: "Username   ama Password ka ayaa khaldan!" });
     }
 });
 
