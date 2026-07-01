@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
 
 const app = express();
 
@@ -13,7 +12,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-// Xogta rasmiga ah ee Ardayda BIILE ACADEMY
 const ardayda = [
     {
         username: "ali123",
@@ -62,7 +60,6 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const arday = ardayda.find(u => u.username === username && u.password === password);
-
     if (arday) {
         req.session.ardayId = username;
         res.redirect('/dashboard');
@@ -71,12 +68,39 @@ app.post('/login', (req, res) => {
     }
 });
 
+// Bogga Koowaad (Courses)
 app.get('/dashboard', (req, res) => {
-    if (!req.session.ardayId) {
-        return res.redirect('/');
-    }
+    if (!req.session.ardayId) return res.redirect('/');
     const arday = ardayda.find(u => u.username === req.session.ardayId);
-    res.render('dashboard', { arday });
+    res.render('dashboard', { arday, tab: 'courses' });
+});
+
+// Bogga Imtixaanka
+app.get('/exam', (req, res) => {
+    if (!req.session.ardayId) return res.redirect('/');
+    const arday = ardayda.find(u => u.username === req.session.ardayId);
+    res.render('dashboard', { arday, tab: 'exam' });
+});
+
+// Bogga Natiijooyinka
+app.get('/result', (req, res) => {
+    if (!req.session.ardayId) return res.redirect('/');
+    const arday = ardayda.find(u => u.username === req.session.ardayId);
+    res.render('dashboard', { arday, tab: 'result' });
+});
+
+// Bogga Lacagaha
+app.get('/finance', (req, res) => {
+    if (!req.session.ardayId) return res.redirect('/');
+    const arday = ardayda.find(u => u.username === req.session.ardayId);
+    res.render('dashboard', { arday, tab: 'finance' });
+});
+
+// Bogga Assignment
+app.get('/assignment', (req, res) => {
+    if (!req.session.ardayId) return res.redirect('/');
+    const arday = ardayda.find(u => u.username === req.session.ardayId);
+    res.render('dashboard', { arday, tab: 'assignment' });
 });
 
 app.get('/logout', (req, res) => {
@@ -85,6 +109,4 @@ app.get('/logout', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server-ka BIILE ACADEMY wuxuu ka kacay port-ka: ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server-ka BIILE ACADEMY ka kacay: ${PORT}`));
