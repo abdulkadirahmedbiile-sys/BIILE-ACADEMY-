@@ -4,57 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Profile - BIILE ACADEMY</title>
-    <!-- Ku darista Astaamaha Rasmiga ah (FontAwesome Icons) -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #fff; color: #333; }
-        
-        /* Header-ka sare ee guduudan ama guduudka xiga (Sida Jaamacadda Golden) */
         .header { background: #4a154b; color: white; padding: 15px; text-align: center; position: relative; }
         .logout-btn { background: transparent; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-size: 14px; position: absolute; right: 15px; top: 15px; font-weight: bold; border: 1px solid white; display: flex; align-items: center; gap: 5px; }
-        .logout-btn:hover { background: rgba(255,255,255,0.1); }
         .header h2 { margin: 10px 0 5px 0; font-size: 18px; font-weight: 600; }
-        
-        /* Cinwaanka ka hooseeya Header-ka */
         .breadcrumb { background: #f8f9fa; padding: 10px 20px; font-size: 13px; color: #666; border-bottom: 1px solid #eee; }
-        
         .container { max-width: 500px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
         
-        /* Qaybta Profile-ka (Sawirka iyo Magaca dhexda) */
         .profile-card { text-align: center; margin-bottom: 25px; padding-top: 10px; }
         .avatar { width: 100px; height: 100px; background: #e0e0e0; border-radius: 50%; margin: 0 auto 15px auto; display: flex; justify-content: center; align-items: center; font-size: 45px; color: #777; border: 4px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
         .profile-card h3 { margin: 5px 0; font-size: 19px; color: #222; font-weight: 600; }
         .profile-card p { margin: 2px 0; color: #777; font-size: 13px; }
-        
-        /* Baraha Bulshada ee hoos yaalla magaca */
         .social-icons { display: flex; justify-content: center; gap: 15px; margin-top: 12px; }
         .social-icons a { color: #555; font-size: 15px; text-decoration: none; border: 1px solid #ddd; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
         
-        /* Liiska Menu-yada ee is dabo yaala oo cawl ah */
+        /* Menu-ga oo laga dhigay Link toos ah */
         .menu-list { background: #fff; border-top: 1px solid #eee; margin-bottom: 25px; padding: 0; list-style: none; }
-        .menu-item { padding: 14px 20px; border-bottom: 1px solid #eee; display: flex; align-items: center; font-size: 14px; color: #666; cursor: pointer; transition: background 0.2s; }
+        .menu-link { text-decoration: none; display: block; color: inherit; }
+        .menu-item { padding: 14px 20px; border-bottom: 1px solid #eee; display: flex; align-items: center; font-size: 14px; color: #666; transition: background 0.2s; }
         .menu-item i { margin-right: 12px; width: 20px; text-align: center; font-size: 15px; }
         .menu-item.active { background: #4a154b; color: white; font-weight: bold; border-bottom: none; }
         
-        /* Cinwaanka Qaybaha Hoose */
         .section-title { font-size: 16px; font-weight: bold; text-transform: uppercase; color: #222; margin: 25px 0 15px 5px; letter-spacing: 0.5px; }
         .content-card { background: white; border-radius: 4px; padding: 15px; border: 1px solid #eee; margin-bottom: 15px; overflow-x: auto; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
         
-        /* Shaxda Result-ka iyo Finance (Madax Jaala ah) */
         .custom-table { width: 100%; border-collapse: collapse; margin-top: 5px; }
         .table-header { background: #ffc107; color: #222; font-weight: bold; }
         .table-header th, .custom-table td { padding: 12px 10px; text-align: left; font-size: 13px; }
         .custom-table tr { border-bottom: 1px solid #eee; }
-        .custom-table tr:last-child { border-bottom: none; }
         
-        /* Badanka Imtixaanka (Enter) */
         .exam-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 5px; border-bottom: 1px solid #eee; }
-        .exam-row:last-child { border-bottom: none; }
         .enter-btn { background: #ffc107; color: #222; text-decoration: none; padding: 6px 15px; border-radius: 4px; font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
         
-        /* Assignment Card */
         .assignment-box { border: 1px solid #eee; border-radius: 6px; text-align: center; padding: 0; background: #fff; margin-top: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
         .assignment-image { background: #f4f4f4; color: #333; font-size: 20px; font-weight: bold; padding: 45px 10px; border-bottom: 1px solid #eee; text-transform: uppercase; }
         .assignment-body { padding: 15px; text-align: left; }
@@ -69,7 +52,6 @@
 </head>
 <body>
 
-    <!-- Header-ka Sare -->
     <div class="header">
         <h2>Student Profile</h2>
         <a href="/logout" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
@@ -81,7 +63,6 @@
 
     <div class="container">
         
-        <!-- Profile Card -->
         <div class="profile-card">
             <div class="avatar"><i class="fa-solid fa-user"></i></div>
             <h3><%= arday.magac %></h3>
@@ -94,17 +75,17 @@
             </div>
         </div>
 
-        <!-- Liiska Menu-yada ee is dabo yaala -->
+        <!-- Menu-da oo hada ah boggag rasmi ah oo ruxma -->
         <ul class="menu-list">
-            <li class="menu-item active" onclick="switchTab('courses', this)"><i class="fa-solid fa-book-open"></i> Courses</li>
-            <li class="menu-item" onclick="switchTab('exam', this)"><i class="fa-solid fa-pen-to-square"></i> Exam</li>
-            <li class="menu-item" onclick="switchTab('result', this)"><i class="fa-solid fa-chart-bar"></i> Result</li>
-            <li class="menu-item" onclick="switchTab('finance', this)"><i class="fa-solid fa-dollar-sign"></i> Finance</li>
-            <li class="menu-item" onclick="switchTab('assignment', this)"><i class="fa-solid fa-folder-open"></i> Assignment</li>
+            <a href="/dashboard" class="menu-link"><li class="menu-item <%= tab === 'courses' ? 'active' : '' %>"><i class="fa-solid fa-book-open"></i> Courses</li></a>
+            <a href="/exam" class="menu-link"><li class="menu-item <%= tab === 'exam' ? 'active' : '' %>"><i class="fa-solid fa-pen-to-square"></i> Exam</li></a>
+            <a href="/result" class="menu-link"><li class="menu-item <%= tab === 'result' ? 'active' : '' %>"><i class="fa-solid fa-chart-bar"></i> Result</li></a>
+            <a href="/finance" class="menu-link"><li class="menu-item <%= tab === 'finance' ? 'active' : '' %>"><i class="fa-solid fa-dollar-sign"></i> Finance</li></a>
+            <a href="/assignment" class="menu-link"><li class="menu-item <%= tab === 'assignment' ? 'active' : '' %>"><i class="fa-solid fa-folder-open"></i> Assignment</li></a>
         </ul>
 
         <!-- QAYBTA 1: COURSES -->
-        <div id="courses" class="tab-content active">
+        <% if (tab === 'courses') { %>
             <div class="section-title">My Courses</div>
             <div class="content-card">
                 <h4 style="margin: 0 0 10px 0; color: #4a154b;"><%= arday.koorso %></h4>
@@ -114,10 +95,10 @@
                     <% }); %>
                 </ul>
             </div>
-        </div>
+        <% } %>
 
         <!-- QAYBTA 2: EXAM -->
-        <div id="exam" class="tab-content">
+        <% if (tab === 'exam') { %>
             <div class="section-title">Exam Courses</div>
             <div class="content-card">
                 <% arday.casharo.forEach(function(cashar) { %>
@@ -127,10 +108,10 @@
                     </div>
                 <% }); %>
             </div>
-        </div>
+        <% } %>
 
         <!-- QAYBTA 3: RESULT -->
-        <div id="result" class="tab-content">
+        <% if (tab === 'result') { %>
             <div class="section-title">Exam Results</div>
             <div class="content-card" style="padding: 0; border-radius: 4px; overflow: hidden;">
                 <table class="custom-table">
@@ -148,10 +129,10 @@
                     <% }); %>
                 </table>
             </div>
-        </div>
+        <% } %>
 
         <!-- QAYBTA 4: FINANCE -->
-        <div id="finance" class="tab-content">
+        <% if (tab === 'finance') { %>
             <div class="section-title">Finance Statement</div>
             <div class="content-card" style="padding: 0; border-radius: 4px; overflow: hidden;">
                 <table class="custom-table">
@@ -165,4 +146,16 @@
                     </tr>
                     <% arday.bayaan_lacagaha.forEach(function(item) { %>
                         <tr>
-<%= item.no %><%= item.date %><%= item.info %><%= item.dr %><%= item.cr %><%= item.bal %><% }); %>My Assignment<% arday.assignments.forEach(function(assign) { %><%= assign.maaddo %><%= assign.maaddo %><%= assign.qeybta %> <%= assign.semester %><%= assign.code %><% }); %>BIILE ONLINE UNIVERSITYfunction switchTab(tabId, element) {document.querySelectorAll('.tab-content').forEach(tab => {tab.classList.remove('active');});document.querySelectorAll('.menu-item').forEach(item => {item.classList.remove('active');});document.getElementById(tabId).classList.add('active');element.classList.add('active');}
+                            <td><%= item.no %></td>
+                            <td style="color: #666; white-space: nowrap; font-size:12px;"><%= item.date %></td>
+                            <td style="font-weight: 500;"><%= item.info %></td>
+                            <td style="color: #c00;"><%= item.dr %></td>
+                            <td style="color: #080;"><%= item.cr %></td>
+                            <td style="font-weight: bold;"><%= item.bal %></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        <% } %>
+
+        <!-- QAYBTA 5: ASSIGNMENT -->
